@@ -121,7 +121,7 @@ const Nav: React.FC<{ className?: string; children?: React.ReactNode }> & {
     active?: boolean;
   }>;
 } = ({ className, children }) => (
-  <ul className={clsx("flex items-center gap-6 overflow-x-auto w-full", className)}>
+  <ul className={clsx("flex items-center gap-6 overflow-x-auto w-full text-white", className)}>
     {children}
   </ul>
 );
@@ -134,7 +134,7 @@ Nav.Item = ({ href = "#", target, onClick, children, active }) => (
       onClick={onClick}
       className={clsx(
         "text-sm font-medium  whitespace-nowrap text-left",
-        "text-foreground/90 hover:text-foreground",
+        "text-white/90 hover:text-white",
         active && "text-primary"
       )}
     >

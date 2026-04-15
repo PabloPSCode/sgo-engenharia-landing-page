@@ -3,17 +3,17 @@
 @import "../styles/phone-overrides.css";
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {--color-primary-50:  #f0fdf4;}
-@theme {--color-primary-100: #dcfce7;}
-@theme {--color-primary-200: #bbf7d0;}
-@theme {--color-primary-300: #86efac;}
-@theme {--color-primary-400: #4ade80;}
-@theme {--color-primary-500: #009739;}
-@theme {--color-primary-600: #008131;}
-@theme {--color-primary-700: #006628;}
-@theme {--color-primary-800: #004d1f;}
-@theme {--color-primary-900: #003315;}
-@theme {--color-primary-950: #001a0a;}
+@theme {--color-primary-50:  #f5f6fa;}
+@theme {--color-primary-100: #e6e9f2;}
+@theme {--color-primary-200: #cdd3e2;}
+@theme {--color-primary-300: #a9b1c8;}
+@theme {--color-primary-400: #7e89a9;}
+@theme {--color-primary-500: #5d6582;}
+@theme {--color-primary-600: #505871;}
+@theme {--color-primary-700: #3f4559;}
+@theme {--color-primary-800: #2e3341;}
+@theme {--color-primary-900: #1f232d;}
+@theme {--color-primary-950: #12141a;}
 
 @theme {--color-secondary-50:  #fffdea;}
 @theme {--color-secondary-100: #fef9c3;}
@@ -27,17 +27,17 @@
 @theme {--color-secondary-900: #665200;}
 @theme {--color-secondary-950: #332900;}
 
-@theme {--color-tertiary-50:  #eff6ff;}
-@theme {--color-tertiary-100: #dbeafe;}
-@theme {--color-tertiary-200: #bfdbfe;}
-@theme {--color-tertiary-300: #93c5fd;}
-@theme {--color-tertiary-400: #60a5fa;}
-@theme {--color-tertiary-500: #002776;}
-@theme {--color-tertiary-600: #001f5e;}
-@theme {--color-tertiary-700: #001947;}
-@theme {--color-tertiary-800: #00122f;}
-@theme {--color-tertiary-900: #000c1a;}
-@theme {--color-tertiary-950: #00060d;}
+@theme {--color-tertiary-50:  #eef4f7;}
+@theme {--color-tertiary-100: #d7e4ea;}
+@theme {--color-tertiary-200: #b0cad5;}
+@theme {--color-tertiary-300: #87aebd;}
+@theme {--color-tertiary-400: #5f92a4;}
+@theme {--color-tertiary-500: #407487;}
+@theme {--color-tertiary-600: #315b6a;}
+@theme {--color-tertiary-700: #24444f;}
+@theme {--color-tertiary-800: #172d34;}
+@theme {--color-tertiary-900: #0d181d;}
+@theme {--color-tertiary-950: #050c0f;}
 
 @theme {--color-info-50: #eff6ff;}
 @theme {--color-info-100: #dbeafe;}
@@ -88,19 +88,18 @@
 @theme {--color-destructive-950: #2b0009;}
 
 @theme {
-  --color-background: #F6F5F7;  /* light mode */
-  --color-foreground: #1F1F1F;  /* light mode */
+  --color-background: #ffffff;  /* light mode */
+  --color-foreground: #121212;  /* light mode */
   --color-bg-card: #ffffff;  /* light mode */
-  --color-border-card: #ffffff;  /* light mode */
+  --color-border-card: #ececec;  /* light mode */
 
-    --font-primary: "Work Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-               Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
-               "Segoe UI Emoji", sans-serif;
+  --font-primary: var(--font-body), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
 
-  /* Secondary font (e.g., for headings) */
-  --font-secondary: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-                    Roboto, "Helvetica Neue", Arial, "Noto Sans",
-                    "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  --font-secondary: var(--font-body), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
 
 }
 
@@ -119,11 +118,19 @@
 
 html{
   scroll-behavior: smooth;
-  font-family: var(--font-primary);
+  font-family: var(--font-body), var(--font-primary);
+  background-color: var(--color-background);
+}
+
+body{
+  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body), var(--font-primary);
 }
 
 h1, h2, h3, h4, h5, h6, button, a {
-  font-family: var(--font-secondary);
+  font-family: var(--font-body), var(--font-secondary);
 }
 
 button{

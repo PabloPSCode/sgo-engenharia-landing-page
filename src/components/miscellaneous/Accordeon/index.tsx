@@ -1,5 +1,6 @@
 'use client';
 
+import RevealContainer from "@/components/animations-and-loading/RevealContainer";
 import { MinusCircleIcon, PlusCircleIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
 import { useId, useMemo, useState } from "react";
@@ -24,6 +25,8 @@ export interface AccordeonProps {
   showDividers?: boolean;
   /** Largura máxima opcional (ex.: "max-w-3xl") */
   maxWidthClassName?: string;
+  /** Aplica animação reveal em cada item */
+  animateItems?: boolean;
 }
 
 export function Accordeon({
@@ -34,6 +37,7 @@ export function Accordeon({
   itemClassName,
   showDividers = true,
   maxWidthClassName = "max-w-3xl",
+  animateItems = false,
 }: AccordeonProps) {
   /** Normaliza defaultOpen permitindo ids (string) ou índices (number) */
   const initialOpen = useMemo(() => {
@@ -82,11 +86,8 @@ export function Accordeon({
         const headerId = `${baseId}-header-${idx}`;
         const panelId = `${baseId}-panel-${idx}`;
 
-        return (
-          <div
-            key={`${q.question}-${idx}`}
-            className={clsx("w-full", itemClassName)}
-          >
+        const itemNode = (
+          <div className={clsx("w-full", itemClassName)}>
             {/* Header */}
             <div className="w-full flex items-start justify-between gap-3 py-2">
               <button
@@ -158,6 +159,21 @@ export function Accordeon({
             {showDividers && idx !== questions.length - 1 && (
               <div className="h-px w-full bg-foreground/10" />
             )}
+          </div>
+        );
+
+        return animateItems ? (
+          <RevealContainer
+            key={`${q.question}-${idx}`}
+            once
+            delay={idx + 1}
+            className="w-full"
+          >
+            {itemNode}
+          </RevealContainer>
+        ) : (
+          <div key={`${q.question}-${idx}`} className="w-full">
+            {itemNode}
           </div>
         );
       })}

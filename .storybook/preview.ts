@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { Preview } from "@storybook/nextjs";
-//@ts-ignore
 import "../src/styles/globals.css";
 
 const preview: Preview = {
