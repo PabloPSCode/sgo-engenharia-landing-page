@@ -24,6 +24,11 @@ export type ServiceItem = ContentItem & {
   iconKey: ServiceIconKey;
 };
 
+export type GalleryItem = {
+  image: string;
+  text: string;
+};
+
 export type ProofItem = ContentItem & {
   iconKey: ProofIconKey;
 };
@@ -63,7 +68,7 @@ export const videoUrls = {
 export const heroMock = {
   title: "Excelência em soldagem e gestão da qualidade",
   description:
-    "Prestação de serviços de coordenação, consultoria e gerenciamento de qualidade, desenvolvimento de processos de soldagem e elaboração de documentação técnica.",
+    "Consultoria, gerenciamento de qualidade e desenvolvimento de processos de soldagem.",
 };
 
 export const aboutMock = {
@@ -110,6 +115,29 @@ export const serviceItems: ServiceItem[] = [
     iconKey: "buildings",
     title: "Auditorias e Inspeções",
     text: "Realização de auditorias internas e externas, inspeções visuais e acompanhamento de ensaios não destrutivos (ENDs).",
+  },
+];
+
+export const serviceGalleryItems: GalleryItem[] = [
+  {
+    image: "/imgs/welding1.png",
+    text: "Padronizacao",
+  },
+  {
+    image: "/imgs/welding2.png",
+    text: "Suporte tecnico",
+  },
+  {
+    image: "/imgs/welding3.png",
+    text: "Procedimentos",
+  },
+  {
+    image: "/imgs/welding4.png",
+    text: "Produtividade",
+  },
+  {
+    image: "/imgs/welding.5png.png",
+    text: "Qualidade",
   },
 ];
 

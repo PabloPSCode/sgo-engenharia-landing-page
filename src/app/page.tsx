@@ -8,6 +8,7 @@ import Footer from "@/components/elements/Footer";
 import LandingHeader from "@/components/elements/LandingHeader";
 import { Section } from "@/components/elements/Section";
 import VideoSection from "@/components/elements/VideoSection";
+import DomeGallery from "@/components/media/DomeGallery";
 import { Accordeon } from "@/components/miscellaneous/Accordeon";
 import Paragraph from "@/components/typography/Paragraph";
 import Subtitle from "@/components/typography/Subtitle";
@@ -21,6 +22,7 @@ import {
   imageUrls,
   navigationItems,
   qualificationItems,
+  serviceGalleryItems,
   serviceItems,
   videoUrls,
   type ProofIconKey,
@@ -243,12 +245,12 @@ export default function SgoLandingHome() {
           backgroundOnly
           showOverlay={false}
           showPlayPauseButton={false}
-          containerClassName="!min-h-[80vh] bg-transparent"
+          containerClassName="!min-h-[82vh] bg-transparent"
         />
-        <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-r from-gray-900 via-primary-800/50 to-primary-500/18" />
+        <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-r from-gray-900 via-primary-800/50 to-primary-500/18 flex flex-col items-center justify-center" />
 
         <div className="absolute inset-0 z-30">
-          <div className="mx-auto flex min-h-[calc(100vh-6rem)] w-full max-w-7xl items-center justify-center px-6 pb-16 lg:px-8">
+          <div className="mx-auto my-auto min-h-[95vh] flex w-full max-w-7xl items-center justify-center2 px-6 pb-16 lg:px-8">
             <RevealContainer
               once
               className="pointer-events-auto m-auto space-y-8"
@@ -256,12 +258,12 @@ export default function SgoLandingHome() {
               <Title
                 content={heroMock.title}
                 element="h1"
-                className="max-w-[70vw] sm:max-w-[60vw]  text-center text-[3.4rem] leading-[0.96] tracking-[-0.05em] text-white sm:text-[4.35rem] lg:text-[5.45rem]"
+                className="max-w-[70vw] sm:max-w-[50vw]  xl:max-w-[40vw] text-center !text-3xl leading-[0.96] tracking-[-0.05em] text-white sm:!text-5xl"
               />
 
               <Paragraph
                 content={heroMock.description}
-                className="max-w-[70vw] sm:max-w-[60vw] text-center  text-lg leading-[1.55] text-white/80 lg:text-[1.06rem]"
+                className="max-w-[70vw] sm:max-w-[50vw] xl:max-w-[40vw] text-center !text-lg md:!text-xl leading-[1.55] text-white/80"
               />
 
               <FadeContainer
@@ -320,54 +322,30 @@ export default function SgoLandingHome() {
               <div className="pt-3">
                 <Button
                   type="button"
-                  label="Saiba mais"
-                  onClick={() => scrollToSection("qualificacoes")}
+                  label="Entrar em contato"
+                  onClick={() => scrollToSection("contato")}
                   className="!rounded-full !bg-secondary-500 !px-8 !py-4 !text-black"
                 />
               </div>
             </div>
 
             <div className="w-full">
-              <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
-                  {aboutImageCards.slice(0, 2).map((card, index) => (
                     <RevealContainer
-                      key={card.alt}
+                      key="profile-reveal"
                       once
-                      delay={index + 1}
-                      className={card.wrapperClassName}
+                      className="overflow-hidden rounded-[1.75rem] bg-[#f3f3f3] p-3"
                     >
                       <Image
-                        src={card.src}
-                        alt={card.alt}
-                        width={card.width}
-                        height={card.height}
+                        src="./imgs/profile.png"
+                        alt="Profile"
+                        width={400}
+                        height={400}
                         unoptimized
-                        sizes="(max-width: 1024px) 50vw, 25vw"
-                        className={card.imageClassName}
+                        className="h-auto w-full rounded-[1.25rem] object-cover "
                       />
                     </RevealContainer>
-                  ))}
                 </div>
-
-                <div className="pt-8">
-                  <RevealContainer
-                    once
-                    delay={3}
-                    className={aboutImageCards[2].wrapperClassName}
-                  >
-                    <Image
-                      src={aboutImageCards[2].src}
-                      alt={aboutImageCards[2].alt}
-                      width={aboutImageCards[2].width}
-                      height={aboutImageCards[2].height}
-                      unoptimized
-                      sizes="(max-width: 1024px) 50vw, 25vw"
-                      className={aboutImageCards[2].imageClassName}
-                    />
-                  </RevealContainer>
-                </div>
-              </div>
             </div>
           </div>
         </Section>
@@ -390,6 +368,8 @@ export default function SgoLandingHome() {
                 className="mx-auto mt-4 max-w-2xl text-black/65"
               />
             </div>
+
+
 
             <div className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {serviceItems.map((item, index) => (
@@ -415,6 +395,33 @@ export default function SgoLandingHome() {
                 </RevealContainer>
               ))}
             </div>
+
+                        <RevealContainer once delay={1} className="mt-14">
+              <div className="overflow-hiddensm:p-6">
+                <div className="h-[360px] w-full sm:h-[460px] lg:h-[580px]">
+                  <DomeGallery
+                    images={serviceGalleryItems.map((item) => ({
+                      src: item.image,
+                      alt: item.text,
+                    }))}
+                    fit={0.42}
+                    minRadius={420}
+                    maxRadius={760}
+                    padFactor={0.18}
+                    overlayBlurColor="transparent"
+                    maxVerticalRotationDeg={10}
+                    dragSensitivity={18}
+                    enlargeTransitionMs={280}
+                    openedImageWidth="420px"
+                    openedImageHeight="420px"
+                    imageBorderRadius="24px"
+                    openedImageBorderRadius="28px"
+                    grayscale={false}
+                    segments={20}
+                  />
+                </div>
+              </div>
+            </RevealContainer>
           </div>
         </Section>
       </div>
