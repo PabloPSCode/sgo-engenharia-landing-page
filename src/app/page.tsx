@@ -693,6 +693,16 @@ export default function SgoLandingHome() {
           </Footer.Bottom>
         </Footer.Root>
       </div>
+
+      <a
+        href={contactMock.whatsappFloatingHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Falar com a SGO Engenharia pelo WhatsApp"
+        className="fixed bottom-8 right-5 z-[120] inline-flex items-center gap-3 rounded-full bg-[#25D366] px-4 py-4 text-white shadow-[0_18px_45px_rgba(37,211,102,0.35)] transition-transform duration-300 hover:scale-[1.03] hover:shadow-[0_22px_55px_rgba(37,211,102,0.42)]"
+      >
+        <WhatsappLogoIcon size={32} weight="light" />
+      </a>
     </main>
   );
 }

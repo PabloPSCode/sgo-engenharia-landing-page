@@ -245,6 +245,8 @@ export const contactMock = {
   addressSummary: "Av. Isaac Cassimiro Gomes, nº 1463",
   serviceArea: "Atendimento consultivo para Minas Gerais e demais regiões do Brasil.",
   mapAddress: "Av. Isaac Cassimiro Gomes, 1463",
+  whatsappFloatingHref:
+    "https://wa.me/5531975454901?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20SGO%20Engenharia",
 };
 
 export const contactItems: ContactItem[] = [
