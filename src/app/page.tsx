@@ -238,19 +238,12 @@ export default function SgoLandingHome() {
       <section className="relative overflow-hidden ">
         <VideoSection
           size="full"
-          title={heroMock.title}
-          description={heroMock.description}
           videoUrl={videoUrls.hero}
+          posterUrl={imageUrls.hero}
+          backgroundOnly
+          showOverlay={false}
           showPlayPauseButton={false}
-          primaryButtonTitle="Entre em contato"
-          secondaryButtonTitle="Nossos serviços"
-          onPrimaryClick={() => scrollToSection("contato")}
-          onSecondaryClick={() => scrollToSection("servicos")}
-          containerClassName="!min-h-[80vh] bg-transparent "
-          titleClassName="!hidden"
-          descriptionClassName="!hidden"
-          primaryButtonClassName="!hidden"
-          secondaryButtonClassName="!hidden"
+          containerClassName="!min-h-[80vh] bg-transparent"
         />
         <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-r from-gray-900 via-primary-800/50 to-primary-500/18" />
 
