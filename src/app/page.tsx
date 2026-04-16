@@ -9,6 +9,7 @@ import LandingHeader from "@/components/elements/LandingHeader";
 import { Section } from "@/components/elements/Section";
 import VideoSection from "@/components/elements/VideoSection";
 import { Accordeon } from "@/components/miscellaneous/Accordeon";
+import GoogleMapsRender from "@/components/miscellaneous/GoogleMapsRender";
 import GenericModal from "@/components/modals/GenericModal";
 import Carousel from "@/components/navigation/Swiper";
 import Paragraph from "@/components/typography/Paragraph";
@@ -16,6 +17,8 @@ import Subtitle from "@/components/typography/Subtitle";
 import Title from "@/components/typography/Title";
 import {
   aboutMock,
+  contactItems,
+  contactMock,
   faqItems,
   footerGroups,
   footerMock,
@@ -26,6 +29,7 @@ import {
   serviceGalleryItems,
   serviceItems,
   videoUrls,
+  type ContactIconKey,
   type GalleryItem,
   type ProofIconKey,
   type QualificationItem,
@@ -34,12 +38,16 @@ import {
 import {
   BuildingsIcon,
   ChartLineUpIcon,
+  EnvelopeSimpleIcon,
   FileTextIcon,
   GearSixIcon,
   GlobeHemisphereWestIcon,
+  MapPinIcon,
   MedalIcon,
+  PhoneIcon,
   ShieldCheckIcon,
   UsersThreeIcon,
+  WhatsappLogoIcon,
 } from "@phosphor-icons/react";
 import Image from "next/image";
 import { useState, type ReactNode } from "react";
@@ -103,6 +111,27 @@ const qualificationIconOrder: ProofIconKey[] = [
   "shield",
   "globe",
 ];
+
+const contactIconMap: Record<ContactIconKey, ReactNode> = {
+  phone: <PhoneIcon size={28} weight="fill" className="text-secondary-600" />,
+  whatsapp: (
+    <WhatsappLogoIcon
+      size={28}
+      weight="fill"
+      className="text-secondary-600"
+    />
+  ),
+  email: (
+    <EnvelopeSimpleIcon
+      size={28}
+      weight="fill"
+      className="text-secondary-600"
+    />
+  ),
+  location: (
+    <MapPinIcon size={28} weight="fill" className="text-secondary-600" />
+  ),
+};
 
 function scrollToSection(sectionId: string) {
   document.getElementById(sectionId)?.scrollIntoView({
@@ -515,6 +544,90 @@ export default function SgoLandingHome() {
       </div>
 
       <div id="contato">
+        <Section size="full" sectionClassName="bg-white py-24">
+          <div className="mx-auto w-full max-w-6xl">
+            <div className="mx-auto max-w-3xl text-center">
+              <SplitText
+                text={contactMock.title}
+                tag="h2"
+                splitType="chars"
+                delay={20}
+                textAlign="center"
+                className="block text-4xl font-bold text-black sm:text-5xl"
+              />
+            </div>
+
+            <div className="mt-14 grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+              <div className="space-y-6">
+                <Subtitle
+                  content={contactMock.contactHeading}
+                  className="text-2xl text-black sm:text-[2rem]"
+                />
+
+                <div className="space-y-4">
+                  {contactItems.map((item, index) => (
+                    <RevealContainer
+                      key={item.label}
+                      once
+                      delay={index + 1}
+                      className="h-full"
+                    >
+                      <a
+                        href={item.href}
+                        target={
+                          item.href.startsWith("http") ? "_blank" : undefined
+                        }
+                        rel={
+                          item.href.startsWith("http")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                        className="flex items-center gap-4 rounded-[1.2rem] bg-white px-5 py-5 shadow-[0_12px_28px_rgba(0,0,0,0.05)] transition-transform duration-300 hover:-translate-y-0.5"
+                      >
+                        <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-[1rem] bg-secondary-500/15">
+                          {contactIconMap[item.iconKey]}
+                        </div>
+                        <div className="min-w-0">
+                          <Paragraph
+                            content={item.label}
+                            className="text-sm font-semibold uppercase tracking-[0.12em] text-black/45"
+                          />
+                          <Paragraph
+                            content={item.value}
+                            className="mt-1 text-base text-black/80 sm:text-lg"
+                          />
+                        </div>
+                      </a>
+                    </RevealContainer>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <Subtitle
+                  content={contactMock.locationHeading}
+                  className="text-2xl text-black sm:text-[2rem]"
+                />
+
+                <RevealContainer once delay={2}>
+                  <div className="overflow-hidden rounded-[1.5rem] bg-white p-3 shadow-[0_18px_38px_rgba(0,0,0,0.06)]">
+                    <GoogleMapsRender
+                      title="Localização da SGO Engenharia & Consultoria"
+                      address={contactMock.mapAddress}
+                      aspect="4:3"
+                      borderRadius={18}
+                      minHeight={360}
+                      zoom={15}
+                    />
+                  </div>
+                </RevealContainer>
+              </div>
+            </div>
+          </div>
+        </Section>
+      </div>
+
+      <div>
         <Footer.Root bordered={false} className="bg-primary-900 text-white">
           <Footer.Top
             columns={3}

@@ -45,6 +45,15 @@ export type QualificationItem = {
   text: string;
 };
 
+export type ContactIconKey = "phone" | "whatsapp" | "email" | "location";
+
+export type ContactItem = {
+  label: string;
+  value: string;
+  href: string;
+  iconKey: ContactIconKey;
+};
+
 export const navigationItems: NavigationItem[] = [
   { href: "#sobre", label: "Quem Somos" },
   { href: "#servicos", label: "Serviços" },
@@ -223,6 +232,45 @@ export const faqItems: QuestionItem[] = [
     question: "Atendem projetos em todo o Brasil?",
     answer:
       "Sim! Atuamos em projetos de grande porte em todo o território nacional, oferecendo suporte técnico in loco e soluções customizadas para cada obra.",
+  },
+];
+
+export const contactMock = {
+  title: "Contato",
+  contactHeading: "Informações de contato",
+  locationHeading: "Onde estamos",
+  companyName: "SGO Engenharia & Consultoria",
+  companyDescription:
+    "Atendimento especializado em soldagem, engenharia mecânica e gestão da qualidade para projetos industriais.",
+  addressSummary: "Av. Isaac Cassimiro Gomes, nº 1463",
+  serviceArea: "Atendimento consultivo para Minas Gerais e demais regiões do Brasil.",
+  mapAddress: "Av. Isaac Cassimiro Gomes, 1463",
+};
+
+export const contactItems: ContactItem[] = [
+  {
+    label: "Telefone",
+    value: "(31) 97545-4901",
+    href: "tel:+5531975454901",
+    iconKey: "phone",
+  },
+  {
+    label: "WhatsApp",
+    value: "(31) 97364-4140",
+    href: "https://wa.me/5531973644140",
+    iconKey: "whatsapp",
+  },
+  {
+    label: "E-mail",
+    value: "sgoengenharialtda@gmail.com",
+    href: "mailto:sgoengenharialtda@gmail.com",
+    iconKey: "email",
+  },
+  {
+    label: "Endereço",
+    value: "Av. Isaac Cassimiro Gomes, nº 1463",
+    href: "https://www.google.com/maps/search/?api=1&query=Av.+Isaac+Cassimiro+Gomes,+1463",
+    iconKey: "location",
   },
 ];
 
