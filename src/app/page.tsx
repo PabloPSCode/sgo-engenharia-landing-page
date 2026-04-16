@@ -8,8 +8,9 @@ import Footer from "@/components/elements/Footer";
 import LandingHeader from "@/components/elements/LandingHeader";
 import { Section } from "@/components/elements/Section";
 import VideoSection from "@/components/elements/VideoSection";
-import DomeGallery from "@/components/media/DomeGallery";
 import { Accordeon } from "@/components/miscellaneous/Accordeon";
+import GenericModal from "@/components/modals/GenericModal";
+import Carousel from "@/components/navigation/Swiper";
 import Paragraph from "@/components/typography/Paragraph";
 import Subtitle from "@/components/typography/Subtitle";
 import Title from "@/components/typography/Title";
@@ -25,6 +26,7 @@ import {
   serviceGalleryItems,
   serviceItems,
   videoUrls,
+  type GalleryItem,
   type ProofIconKey,
   type QualificationItem,
   type ServiceIconKey,
@@ -102,35 +104,6 @@ const qualificationIconOrder: ProofIconKey[] = [
   "globe",
 ];
 
-const aboutImageCards = [
-  {
-    src: imageUrls.aboutPrimary,
-    alt: "Soldagem industrial",
-    width: 600,
-    height: 600,
-    wrapperClassName: "overflow-hidden rounded-[1.75rem] bg-[#f3f3f3] p-3",
-    imageClassName: "aspect-square w-full rounded-[1.25rem] object-cover",
-  },
-  {
-    src: imageUrls.aboutSecondary,
-    alt: "Profissional de soldagem",
-    width: 600,
-    height: 760,
-    wrapperClassName: "overflow-hidden rounded-[1.75rem] bg-[#f3f3f3] p-3",
-    imageClassName:
-      "h-[260px] w-full rounded-[1.25rem] object-cover sm:h-[320px]",
-  },
-  {
-    src: imageUrls.aboutTertiary,
-    alt: "Soldagem em processo",
-    width: 600,
-    height: 900,
-    wrapperClassName: "overflow-hidden rounded-[1.75rem] bg-[#f3f3f3] p-3",
-    imageClassName:
-      "h-[360px] w-full rounded-[1.25rem] object-cover sm:h-[500px]",
-  },
-] as const;
-
 function scrollToSection(sectionId: string) {
   document.getElementById(sectionId)?.scrollIntoView({
     behavior: "smooth",
@@ -160,6 +133,8 @@ function renderQualificationCard(
 
 export default function SgoLandingHome() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [selectedGalleryItem, setSelectedGalleryItem] =
+    useState<GalleryItem | null>(null);
   const currentYear = new Date().getFullYear();
 
   return (
@@ -330,29 +305,29 @@ export default function SgoLandingHome() {
             </div>
 
             <div className="w-full">
-                <div className="space-y-4">
-                    <RevealContainer
-                      key="profile-reveal"
-                      once
-                      className="overflow-hidden rounded-[1.75rem] bg-[#f3f3f3] p-3"
-                    >
-                      <Image
-                        src="./imgs/profile.png"
-                        alt="Profile"
-                        width={400}
-                        height={400}
-                        unoptimized
-                        className="h-auto w-full rounded-[1.25rem] object-cover "
-                      />
-                    </RevealContainer>
-                </div>
+              <div className="space-y-4">
+                <RevealContainer
+                  key="profile-reveal"
+                  once
+                  className="overflow-hidden rounded-[1.75rem] bg-[#f3f3f3] p-3"
+                >
+                  <Image
+                    src="./imgs/profile.png"
+                    alt="Profile"
+                    width={400}
+                    height={400}
+                    unoptimized
+                    className="h-auto w-full rounded-[1.25rem] object-cover "
+                  />
+                </RevealContainer>
+              </div>
             </div>
           </div>
         </Section>
       </div>
 
       <div id="servicos">
-        <Section size="full" sectionClassName="bg-[#f5f5f5] py-24">
+        <Section size="full" sectionClassName="bg-[#f5f5f5] pt-24">
           <div className="mx-auto w-full max-w-7xl">
             <div className="mx-auto max-w-3xl text-center">
               <SplitText
@@ -368,8 +343,6 @@ export default function SgoLandingHome() {
                 className="mx-auto mt-4 max-w-2xl text-black/65"
               />
             </div>
-
-
 
             <div className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {serviceItems.map((item, index) => (
@@ -396,28 +369,55 @@ export default function SgoLandingHome() {
               ))}
             </div>
 
-                        <RevealContainer once delay={1} className="mt-14">
-              <div className="overflow-hiddensm:p-6">
-                <div className="h-[360px] w-full sm:h-[460px] lg:h-[580px]">
-                  <DomeGallery
-                    images={serviceGalleryItems.map((item) => ({
-                      src: item.image,
-                      alt: item.text,
-                    }))}
-                    fit={0.42}
-                    minRadius={420}
-                    maxRadius={760}
-                    padFactor={0.18}
-                    overlayBlurColor="transparent"
-                    maxVerticalRotationDeg={10}
-                    dragSensitivity={18}
-                    enlargeTransitionMs={280}
-                    openedImageWidth="420px"
-                    openedImageHeight="420px"
-                    imageBorderRadius="24px"
-                    openedImageBorderRadius="28px"
-                    grayscale={false}
-                    segments={20}
+            <RevealContainer once delay={1} className="mt-14">
+              <div className="overflow-hidden sm:p-6">
+                <div className="h-[480px] w-full sm:h-[480px]">
+                  <Carousel
+                    loop
+                    breakpoints={{
+                      "640": {
+                        rows: 1,
+                        slidesPerView: 2,
+                        spaceBetween: 12,
+                      },
+                      "768": {
+                        rows: 1,
+                        slidesPerView: 3,
+                        spaceBetween: 16,
+                      },
+                      "1024": {
+                        rows: 1,
+                        slidesPerView: 4,
+                        spaceBetween: 20,
+                      },
+                    }}
+                    items={serviceGalleryItems}
+                    onSlideChange={() => {}}
+                    renderItem={(item) => (
+                      <button
+                        type="button"
+                        onClick={() => setSelectedGalleryItem(item)}
+                        className="flex h-full w-full flex-col overflow-hidden rounded-[1.5rem] bg-white text-left shadow-[0_16px_40px_rgba(0,0,0,0.06)] transition-transform duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-secondary-500/60"
+                      >
+                        <Image
+                          src={item.image}
+                          alt={item.title}
+                          width={640}
+                          height={640}
+                          unoptimized
+                          className="h-[240px] w-full object-cover sm:h-[310px] lg:h-[360px]"
+                        />
+                        <Subtitle
+                          content={item.title}
+                          className="!text-sm leading-tight text-black m-4"
+                        />
+                      </button>
+                    )}
+                    rows={1}
+                    showNavigation
+                    slidesPerView={1}
+                    spaceBetween={16}
+                    title="Galeria de processos"
                   />
                 </div>
               </div>
@@ -425,6 +425,28 @@ export default function SgoLandingHome() {
           </div>
         </Section>
       </div>
+
+      <GenericModal
+        open={selectedGalleryItem !== null}
+        onClose={() => setSelectedGalleryItem(null)}
+        title={selectedGalleryItem?.title ?? ""}
+        size="xl"
+        className="!max-w-5xl bg-white"
+        containerClassName="!w-[min(92vw,72rem)]"
+      >
+        {selectedGalleryItem && (
+          <div className="space-y-4">
+              <Image
+                src={selectedGalleryItem.image}
+                alt={selectedGalleryItem.title}
+                width={1600}
+                height={1200}
+                unoptimized
+                className="h-auto max-h-[72vh] w-full object-contain"
+              />
+          </div>
+        )}
+      </GenericModal>
 
       <div id="qualificacoes">
         <Section size="middle" sectionClassName="bg-white py-24">

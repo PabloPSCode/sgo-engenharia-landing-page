@@ -100,22 +100,19 @@ export default function Carousel<T>({
 
   return (
     <>
-      {title && (
-        <h3 className="flex sm:hidden text-base sm:text-lg md:text-xl font-semibold text-foreground w-full text-left mb-4">
-          {title}
-        </h3>
-      )}
-      <div
-        className={clsx("w-full flex flex-col-reverse sm:flex-col", className)}
-      >
-        {title && (
-          <div className="w-full mb-4 flex sm:items-center justify-between">
-            <h3 className="w-full hidden sm:flex text-base sm:text-lg md:text-xl font-semibold text-foreground">
-              {title}
-            </h3>
+      <div className={clsx("w-full", className)}>
+        {(title || showNavigation) && (
+          <div className="mb-4 flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            {title ? (
+              <h3 className="text-base font-semibold text-foreground sm:text-lg md:text-xl">
+                {title}
+              </h3>
+            ) : (
+              <div />
+            )}
 
             {showNavigation && (
-              <div className="w-full flex items-center gap-2 justify-end mt-4 sm:mt-0">
+              <div className="flex items-center gap-2 self-end sm:self-auto">
                 <button
                   ref={prevRef}
                   type="button"

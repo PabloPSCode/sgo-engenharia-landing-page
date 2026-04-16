@@ -26,7 +26,8 @@ export type ServiceItem = ContentItem & {
 
 export type GalleryItem = {
   image: string;
-  text: string;
+  title: string;
+  description: string;
 };
 
 export type ProofItem = ContentItem & {
@@ -121,23 +122,33 @@ export const serviceItems: ServiceItem[] = [
 export const serviceGalleryItems: GalleryItem[] = [
   {
     image: "/imgs/welding1.png",
-    text: "Padronizacao",
+    title: "Solda 1",
+    description:
+      "Registro visual de processos organizados para garantir repetibilidade, controle técnico e redução de desvios em campo.",
   },
   {
     image: "/imgs/welding2.png",
-    text: "Suporte tecnico",
+    title: "Solda 2",
+    description:
+      "Acompanhamento próximo da execução para orientar equipes, validar parâmetros e manter conformidade com os procedimentos.",
   },
   {
     image: "/imgs/welding3.png",
-    text: "Procedimentos",
+    title: "Solda 3",
+    description:
+      "Desenvolvimento e validação de EPS/RQPS com foco em segurança operacional, desempenho do processo e rastreabilidade.",
   },
   {
     image: "/imgs/welding4.png",
-    text: "Produtividade",
+    title: "Solda 4",
+    description:
+      "Avaliação das condições de soldagem e da operação para melhorar rendimento, reduzir retrabalho e otimizar recursos.",
   },
   {
-    image: "/imgs/welding.5png.png",
-    text: "Qualidade",
+    image: "/imgs/welding5.png",
+    title: "Solda 5",
+    description:
+      "Inspeções, auditorias e acompanhamento técnico para sustentar padrões de qualidade ao longo de toda a execução.",
   },
 ];
 
