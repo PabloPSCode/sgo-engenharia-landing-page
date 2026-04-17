@@ -323,7 +323,6 @@ export const footerGroups: FooterGroup[] = [
     items: [
       { href: "#sobre", label: "Sobre" },
       { href: "#qualificacoes", label: "Qualificações" },
-      { href: "#qualificacoes", label: "Projetos" },
     ],
   },
 ];
