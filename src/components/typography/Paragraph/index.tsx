@@ -5,7 +5,7 @@ import React from "react";
 
 interface ParagraphProps {
   /** Conteúdo do texto*/
-  content: string;
+  content: React.ReactNode;
   /** Peso da fonte */
   weight?: "thin" | "light" | "regular" | "medium" | "semibold" | "bold";
   /** Classes CSS adicionais */
@@ -31,5 +31,4 @@ export default function Paragraph({
     </p>
   );
 }
-
 

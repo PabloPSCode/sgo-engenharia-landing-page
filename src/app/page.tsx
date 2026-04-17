@@ -52,7 +52,6 @@ import {
 import Image from "next/image";
 import { useState, type ReactNode } from "react";
 import logoImage from "../../public/imgs/logo.png";
-import logoSmall from "../../public/imgs/logo_small.png";
 import logoPLS from "../../public/imgs/logo_pls.png";
 
 const serviceIcons: Record<ServiceIconKey, ReactNode> = {
@@ -141,6 +140,37 @@ function scrollToSection(sectionId: string) {
   });
 }
 
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function renderTextWithHighlights(text: string, highlights: string[] = []) {
+  if (!highlights.length) {
+    return text;
+  }
+
+  const orderedHighlights = [...highlights].sort((left, right) => {
+    return right.length - left.length;
+  });
+  const highlightSet = new Set(orderedHighlights);
+  const matcher = new RegExp(
+    `(${orderedHighlights.map(escapeRegExp).join("|")})`,
+    "g",
+  );
+
+  return text.split(matcher).map((part, index) => {
+    if (highlightSet.has(part)) {
+      return (
+        <span key={`${part}-${index}`} className="font-semibold text-black">
+          {part}
+        </span>
+      );
+    }
+
+    return <span key={`${part}-${index}`}>{part}</span>;
+  });
+}
+
 function renderQualificationCard(
   item: QualificationItem,
   index: number,
@@ -177,7 +207,7 @@ export default function SgoLandingHome() {
         >
           <LandingHeader.Left className="gap-3">
             <LandingHeader.Logo
-              src={logoSmall.src}
+              src={logoImage.src}
               alt="SGO Engenharia & Consultoria"
               className="w-[180px] rounded-md scale-125 ml-8 "
             />
@@ -296,7 +326,7 @@ export default function SgoLandingHome() {
         </div>
       </section>
 
-      <div id="sobre">
+      <div id="sobre" className="scroll-mt-8">
         <Section size="middle" sectionClassName="bg-white py-24">
           <div className="grid w-full gap-16 lg:grid-cols-[1fr_0.95fr] lg:items-center">
             <div className="space-y-6">
@@ -305,23 +335,32 @@ export default function SgoLandingHome() {
                 tag="h2"
                 splitType="chars"
                 delay={20}
-                textAlign="left"
+                textAlign="center"
                 className="block text-4xl font-bold text-black sm:text-5xl"
               />
 
-              {aboutMock.paragraphs.map((paragraph) => (
+              {aboutMock.paragraphs.map((paragraph, index) => (
                 <Paragraph
                   key={paragraph}
-                  content={paragraph}
+                  content={renderTextWithHighlights(
+                    paragraph,
+                    aboutMock.paragraphHighlights?.[index] ?? [],
+                  )}
                   className="max-w-[640px] text-black/70"
                 />
               ))}
 
               <div className="space-y-3 pt-2">
-                {aboutMock.highlights.map((item) => (
+                {aboutMock.highlights.map((item, index) => (
                   <div key={item} className="flex items-start gap-3">
                     <span className="mt-2 h-2.5 w-2.5 flex-shrink-0 rounded-full bg-primary-500" />
-                    <Paragraph content={item} className="text-black/70" />
+                    <Paragraph
+                      content={renderTextWithHighlights(
+                        item,
+                        aboutMock.highlightEmphasis?.[index] ?? [],
+                      )}
+                      className="text-black/70"
+                    />
                   </div>
                 ))}
               </div>
@@ -331,7 +370,7 @@ export default function SgoLandingHome() {
                   type="button"
                   label="Entrar em contato"
                   onClick={() => scrollToSection("contato")}
-                  className="!rounded-full !bg-secondary-500 !px-8 !py-4 !text-black"
+                  className="!mx-auto !rounded-full !bg-secondary-500 !px-8 !py-4 !text-black"
                 />
               </div>
             </div>
@@ -358,7 +397,7 @@ export default function SgoLandingHome() {
         </Section>
       </div>
 
-      <div id="servicos">
+      <div id="servicos" className="scroll-mt-8">
         <Section size="full" sectionClassName="bg-[#f5f5f5] pt-24">
           <div className="mx-auto w-full max-w-7xl">
             <div className="mx-auto max-w-3xl text-center">
@@ -376,7 +415,7 @@ export default function SgoLandingHome() {
               />
             </div>
 
-            <div className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-14 grid gap-8 md:grid-cols-2">
               {serviceItems.map((item, index) => (
                 <RevealContainer
                   key={item.title}
@@ -480,7 +519,7 @@ export default function SgoLandingHome() {
         )}
       </GenericModal>
 
-      <div id="qualificacoes">
+      <div id="qualificacoes" className="scroll-mt-8">
         <Section size="middle" sectionClassName="bg-white py-24">
           <div className="mx-auto max-w-3xl text-center">
             <SplitText
@@ -512,7 +551,7 @@ export default function SgoLandingHome() {
         </Section>
       </div>
 
-      <div id="duvidas">
+      <div id="duvidas" className="scroll-mt-8">
         <Section size="full" sectionClassName="bg-[#f7f7f7] py-24">
           <div className="mx-auto w-full max-w-4xl">
             <div className="mx-auto max-w-3xl text-center">
@@ -546,7 +585,7 @@ export default function SgoLandingHome() {
         </Section>
       </div>
 
-      <div id="contato">
+      <div id="contato" className="scroll-mt-8">
         <Section size="full" sectionClassName="bg-white py-24">
           <div className="mx-auto w-full max-w-6xl">
             <div className="mx-auto max-w-3xl text-center">

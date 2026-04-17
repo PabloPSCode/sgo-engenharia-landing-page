@@ -55,7 +55,7 @@ export type ContactItem = {
 };
 
 export const navigationItems: NavigationItem[] = [
-  { href: "#sobre", label: "Quem Somos" },
+  { href: "#sobre", label: "Sobre" },
   { href: "#servicos", label: "Serviços" },
   { href: "#qualificacoes", label: "Qualificações" },
 ];
@@ -81,49 +81,61 @@ export const heroMock = {
 };
 
 export const aboutMock = {
-  eyebrow: "Quem somos",
-  title: "Quem Somos",
+  eyebrow: "Sobre",
+  title: "Sobre a SGO Engenharia & Consultoria",
   paragraphs: [
-    "Somos uma empresa formada por profissionais altamente qualificados, com sólida formação acadêmica e ampla experiência prática nas áreas de engenharia, qualidade e processos de soldagem.",
+    "Somos uma empresa formada por profissionais altamente qualificados, com sólida formação acadêmica e ampla experiência prática nas áreas de engenharia, qualidade e processos de soldagem. Nossa equipe conta com:",
   ],
   highlights: [
     "Graduação em Engenharia Mecânica e Gestão da Qualidade.",
+    "Formação tecnológica em Soldagem pelo Centro Educacional Roberto Porto (CERP – MG).",
     "Pós-graduação em Tecnologia e Qualificação em Soldagem (IWE/IIW) pela UFMG.",
     "MBA em Coaching Aplicado à Gestão de Pessoas.",
-    "Mais de 30 anos de experiência em construção e montagem industrial.",
+    "Especialização em novas diretrizes, tecnologias e desafios em processos de soldagem, com capacitação pela Lincoln Electric do Brasil.",
+    "Mais de 30 anos de experiência em construção e montagem industrial em projetos de grande porte.",
+    "Especialização em processos de soldagem ao arco elétrico, com formação complementar em instituições de referência internacional, como: GULLCO (Newmarket, Ontario - Canadá), Hobart Brothers (Troy, Ohio - EUA), Lincoln Electric (Cleveland, Ohio - EUA), Miller Electric (Appleton, Wisconsin - EUA), ESAB (CONTAGEM-BRA), FRONIUS (AUSTRIA)",
+  ],
+  highlightEmphasis: [
+    ["Engenharia Mecânica e Gestão da Qualidade"],
+    ["Soldagem"],
+    ["Tecnologia e Qualificação em Soldagem (IWE/IIW)"],
+    ["Coaching Aplicado à Gestão de Pessoas"],
+    ["novas diretrizes, tecnologias e desafios em processos de soldagem"],
+    ["Mais de 30 anos de experiência"],
+    ["processos de soldagem ao arco elétrico"],
   ],
 };
 
 export const serviceItems: ServiceItem[] = [
   {
     iconKey: "gear",
-    title: "Padronização de Processos",
-    text: "Desenvolvimento e implementação de soluções tecnológicas para padronização dos processos de soldagem com foco na redução de custos.",
+    title: "Padronização e Otimização de Processos",
+    text: "Desenvolver e implementar soluções tecnológicas que promovam padronização dos processos de soldagem, com foco na redução de custos e aumento da produtividade.",
   },
   {
     iconKey: "users",
-    title: "Suporte Técnico em Obra",
-    text: "Suporte técnico direto aos Supervisores de Soldagem, assegurando conformidade com procedimentos qualificados (EPS/RQPS).",
+    title: "Suporte Técnico em Soldagem nas Obras Eletromecânica Industrial",
+    text: "Prestar suporte técnico direto e contínuo aos Supervisores de Soldagem nas obras, assegurando a correta aplicação dos processos de soldagem, a conformidade com os procedimentos qualificados (EPS/RQPS).",
   },
   {
     iconKey: "file",
-    title: "Qualificação de Procedimentos",
-    text: "Desenvolver e qualificar EPS/RQPS em conformidade com requisitos normativos aplicáveis (ASME, API, AWS).",
+    title: "Estudo de Produtividade / Controle de Equipamentos de Soldagem e Manutenção",
+    text: "Realizar estudos dos parâmetros de soldagem visando à maximização da eficiência da mão de obra e dos equipamentos destinados ao projeto.",
   },
   {
     iconKey: "chart",
-    title: "Estudos de Produtividade",
-    text: "Análise dos parâmetros de soldagem visando maximização da eficiência da mão de obra e equipamentos.",
+    title: "Suporte Técnico e Normativo",
+    text: "Desenvolver e qualificar EPS /RQPS em conformidade com o Escopo das Obras, assegurando o cumprimento rigoroso dos requisitos normativos aplicáveis.",
   },
   {
     iconKey: "shield",
-    title: "Gestão da Qualidade",
-    text: "Desenvolvimento do Plano da Qualidade (PCQ) conforme ISO 9001, ISO 14001 e ISO 45001.",
+    title: "Dimensionamento e Gestão de Recursos",
+    text: "Dimensionar adequadamente equipes de soldagem, equipamentos e consumíveis em cada obra, garantindo eficiência operacional, cumprimento de prazos e qualidade técnica.",
   },
   {
     iconKey: "buildings",
-    title: "Auditorias e Inspeções",
-    text: "Realização de auditorias internas e externas, inspeções visuais e acompanhamento de ensaios não destrutivos (ENDs).",
+    title: "Capacitação Técnica",
+    text: "Supervisionar de forma abrangente os processos de soldagem, realizando inspeções visuais e utilizando equipamentos especializados para garantir a qualidade do produto final, conforme normas e especificações.",
   },
 ];
 
@@ -202,32 +214,32 @@ export const qualificationItems: QualificationItem[] = [
   {
     category: "Qualificação",
     title: "ASME IX",
-    text: "Qualification Standard For Welding, Brazing, and Fusing Procedures.",
+    text: "Norma de qualificação para procedimentos de soldagem, brasagem e fusão, para soldadores, brasadores e operadores de soldagem, brasagem e fusão.",
   },
   {
-    category: "Tubulação",
-    title: "ASME B31.1 / B31.3 / B31.8",
-    text: "Power Piping, Process Piping e Gas Transmission.",
+    category: "Tubulação de Processos",
+    title: "ASME B31.1",
+    text: "Power Piping para sistemas de tubulação aplicados a processos industriais e utilidades.",
   },
   {
-    category: "Tanques",
-    title: "API 650 / NBR 7821",
-    text: "Welded Tanks for Oil Storage e armazenamento de petróleo.",
+    category: "Tubulação de Processos",
+    title: "ASME B31.3 / B31.8",
+    text: "Process Piping e Gas Transmission and Distribution Piping Systems para linhas de processo e dutos.",
   },
   {
-    category: "Vasos de Pressão",
-    title: "ASME I / VIII Div. 1 & 2",
-    text: "Power Boilers e Pressure Vessels.",
+    category: "Soldagem de Tanques",
+    title: "API 650",
+    text: "Welded Tanks for Oil Storage aplicável à fabricação e montagem de tanques soldados para armazenamento.",
   },
   {
-    category: "Sistema de Gestão",
-    title: "ISO 9001 / 14001 / 45001",
-    text: "Qualidade, Meio Ambiente e Segurança do Trabalho.",
+    category: "Soldagem de Tanques",
+    title: "ABNT NBR 7821",
+    text: "Tanques soldados para armazenamento de petróleo e derivados, conforme requisitos aplicáveis ao contexto nacional.",
   },
   {
-    category: "Formação Internacional",
-    title: "IWE/IIW - UFMG",
-    text: "International Welding Engineer certificado.",
+    category: "Caldeiras e Vasos de Pressão",
+    title: "ASME I / ASME VIII Div. 1 e 2",
+    text: "Rules for Construction of Power Boilers e Rules for Construction of Pressure Vessels aplicáveis a filtros de processos, caldeiras, vasos de pressão e fornos.",
   },
 ];
 
@@ -308,7 +320,7 @@ export const footerGroups: FooterGroup[] = [
   {
     title: "Empresa",
     items: [
-      { href: "#sobre", label: "Quem somos" },
+      { href: "#sobre", label: "Sobre" },
       { href: "#qualificacoes", label: "Qualificações" },
       { href: "#qualificacoes", label: "Projetos" },
     ],
@@ -318,6 +330,6 @@ export const footerGroups: FooterGroup[] = [
 export const footerMock = {
   summary: "Excelência em soldagem e gestão da qualidade industrial",
   copyright:
-    "SGO - Soldagem e Gestão da Qualidade. Todos os direitos reservados.",
+    "SGO - Soldagem e Gestão da Qualidade.",
   note: "Certificações IWE/IIW - ISO 9001/14001/45001",
 };
