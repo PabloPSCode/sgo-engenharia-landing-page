@@ -119,23 +119,30 @@ const Nav: React.FC<{ className?: string; children?: React.ReactNode }> & {
     onClick?: () => void;
     children: React.ReactNode;
     active?: boolean;
+    className?: string;
   }>;
 } = ({ className, children }) => (
-  <ul className={clsx("flex items-center gap-6 overflow-x-auto w-full text-white", className)}>
+  <ul
+    className={clsx(
+      "flex w-full items-center gap-6 overflow-x-auto text-foreground",
+      className
+    )}
+  >
     {children}
   </ul>
 );
 
-Nav.Item = ({ href = "#", target, onClick, children, active }) => (
+Nav.Item = ({ href = "#", target, onClick, children, active, className }) => (
   <li>
     <a
       href={href}
       target={target}
       onClick={onClick}
       className={clsx(
-        "text-sm font-medium  whitespace-nowrap text-left",
-        "text-white/90 hover:text-white",
-        active && "text-primary"
+        "block whitespace-nowrap text-left text-sm font-medium transition-colors transition-opacity",
+        "text-current opacity-85 hover:opacity-100",
+        active && "text-primary opacity-100",
+        className
       )}
     >
       {children}
@@ -192,10 +199,16 @@ const MobileMenuPanel: React.FC<{
   open?: boolean;
   children?: React.ReactNode;
   cta?: React.ReactNode;
-}> = ({ open, children, cta }) => {
+  className?: string;
+}> = ({ open, children, cta, className }) => {
   if (!open) return null;
   return (
-    <div className="md:hidden absolute left-0 right-0 top-full z-30 w-full border-b border-foreground/10 bg-background/98 backdrop-blur transition">
+    <div
+      className={clsx(
+        "absolute left-0 right-0 top-full z-30 w-full border-b border-foreground/10 bg-background/98 text-foreground backdrop-blur transition md:hidden",
+        className
+      )}
+    >
       <div className="mx-auto max-w-7xl px-3 py-3">
         <ul className="flex flex-col items-center gap-3">{children}</ul>
         {cta && <div className="mt-3">{cta}</div>}

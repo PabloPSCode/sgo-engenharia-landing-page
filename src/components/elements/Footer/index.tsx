@@ -79,9 +79,9 @@ const Top: React.FC<TopGridProps> = ({
     <div
       {...rest}
       className={clsx(
-        "mx-auto w-full max-w-7xl px-4 sm:px-6",
+        "flex flex-col items-center mx-auto w-full max-w-7xl px-4 sm:px-6",
         "py-8 sm:py-10",
-        "grid grid-cols-1 gap-6 sm:grid-cols-2",
+        "sm:grid gap-6 sm:grid-cols-2",
         bordered && "border-b border-foreground/50",
         colClass,
         className

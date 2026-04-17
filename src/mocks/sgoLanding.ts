@@ -61,8 +61,7 @@ export const navigationItems: NavigationItem[] = [
 ];
 
 export const imageUrls = {
-  hero:
-    "https://images.unsplash.com/photo-1730584474401-5a03c6d1b2d1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200",
+  hero: "https://images.unsplash.com/photo-1730584474401-5a03c6d1b2d1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200",
   aboutPrimary:
     "https://images.unsplash.com/photo-1683470156393-8c9d91eb5e2a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600",
   aboutSecondary:
@@ -131,33 +130,53 @@ export const serviceItems: ServiceItem[] = [
 export const serviceGalleryItems: GalleryItem[] = [
   {
     image: "/imgs/welding1.png",
-    title: "Solda 1",
+    title: "Processo FCAW-G em tubulação industrial.",
     description:
       "Registro visual de processos organizados para garantir repetibilidade, controle técnico e redução de desvios em campo.",
   },
   {
     image: "/imgs/welding2.png",
-    title: "Solda 2",
+    title:
+      "Bizeladeira mecanizada em confecção da geometria do bizel mecanizado.",
     description:
       "Acompanhamento próximo da execução para orientar equipes, validar parâmetros e manter conformidade com os procedimentos.",
   },
   {
     image: "/imgs/welding3.png",
-    title: "Solda 3",
+    title: "Processo FCAW-G mecanizado em tubulação industrial e pipeline.",
     description:
       "Desenvolvimento e validação de EPS/RQPS com foco em segurança operacional, desempenho do processo e rastreabilidade.",
   },
   {
     image: "/imgs/welding4.png",
-    title: "Solda 4",
+    title: "GTAW Tig orbital para soldagem de tubução industrial.",
     description:
       "Avaliação das condições de soldagem e da operação para melhorar rendimento, reduzir retrabalho e otimizar recursos.",
   },
   {
     image: "/imgs/welding5.png",
-    title: "Solda 5",
+    title:
+      "Solda em virador de tubo com dispositivo auxiliar utilizando processos FCAW e GMAW.",
     description:
       "Inspeções, auditorias e acompanhamento técnico para sustentar padrões de qualidade ao longo de toda a execução.",
+  },
+  {
+    image: "/imgs/welding6.png",
+    title: "Processo de soldagem Mecaniado para Caldeiraria industrial.",
+    description:
+      "Registro visual de processos organizados para garantir repetibilidade, controle técnico e redução de desvios em campo.",
+  },
+  {
+    image: "/imgs/welding7.png",
+    title: "Processo de soldagem Semiautomatico GMAW-CCC / FCAW-G e FCAW-S em tubulação industrial e duto terrestre.",
+    description:
+      "Registro visual de processos organizados para garantir repetibilidade, controle técnico e redução de desvios em campo.",
+  },
+  {
+    image: "/imgs/welding8.png",
+    title: "Processo de soldagem Mecanizado em Tubulação e Dutos.",
+    description:
+      "Registro visual de processos organizados para garantir repetibilidade, controle técnico e redução de desvios em campo.",
   },
 ];
 
@@ -243,7 +262,8 @@ export const contactMock = {
   companyDescription:
     "Atendimento especializado em soldagem, engenharia mecânica e gestão da qualidade para projetos industriais.",
   addressSummary: "Av. Isaac Cassimiro Gomes, nº 1463",
-  serviceArea: "Atendimento consultivo para Minas Gerais e demais regiões do Brasil.",
+  serviceArea:
+    "Atendimento consultivo para Minas Gerais e demais regiões do Brasil.",
   mapAddress: "Av. Isaac Cassimiro Gomes, 1463",
   whatsappFloatingHref:
     "https://wa.me/5531975454901?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20SGO%20Engenharia",

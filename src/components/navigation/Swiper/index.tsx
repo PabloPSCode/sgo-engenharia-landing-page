@@ -2,7 +2,7 @@
 
 import { ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
-import React, { useMemo, useRef, useState } from "react";
+import React, { useMemo, useRef } from "react";
 import type { Swiper as SwiperType } from "swiper/bundle";
 import { A11y, Grid, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -82,8 +82,6 @@ export default function Carousel<T>({
 }: CarouselProps<T>) {
   const prevRef = useRef<HTMLButtonElement | null>(null);
   const nextRef = useRef<HTMLButtonElement | null>(null);
-  const [isBeginning, setIsBeginning] = useState(true);
-  const [isEnd, setIsEnd] = useState(false);
 
   const computedBreakpoints = useMemo(() => {
     if (!breakpoints) return undefined;
@@ -120,8 +118,7 @@ export default function Carousel<T>({
                   className={clsx(
                     "inline-flex items-center justify-center rounded-md border px-2.5 py-2",
                     "bg-background text-foreground border-foreground/20",
-                    "hover:bg-foreground/5 transition",
-                    isBeginning && "opacity-50 cursor-not-allowed"
+                    "hover:bg-foreground/5 transition"
                   )}
                 >
                   <ArrowLeftIcon weight="bold" size={16} />
@@ -133,8 +130,7 @@ export default function Carousel<T>({
                   className={clsx(
                     "inline-flex items-center justify-center rounded-md border px-2.5 py-2",
                     "bg-background text-foreground border-foreground/20",
-                    "hover:bg-foreground/5 transition",
-                    isEnd && "opacity-50 cursor-not-allowed"
+                    "hover:bg-foreground/5 transition"
                   )}
                 >
                   <ArrowRightIcon weight="bold" size={16} />
@@ -161,8 +157,6 @@ export default function Carousel<T>({
             swiper.navigation.update();
           }}
           onSlideChange={(s) => {
-            setIsBeginning(s.isBeginning);
-            setIsEnd(s.isEnd);
             onSlideChange?.(s);
           }}
           // @ts-expect-error internal Swiper types

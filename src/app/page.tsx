@@ -167,11 +167,10 @@ export default function SgoLandingHome() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <main className="overflow-x-hidden bg-white pt-20 text-black sm:pt-28">
+    <main className="overflow-x-hidden bg-white pt-20 text-black">
       <div className="fixed inset-x-0 top-0 z-[100]">
         <LandingHeader.Root
           sticky={false}
-          size="lg"
           bordered={false}
           className="bg-primary-900 py-4 shadow-none"
         >
@@ -179,12 +178,12 @@ export default function SgoLandingHome() {
             <LandingHeader.Logo
               src={logoImage.src}
               alt="SGO Engenharia & Consultoria"
-              className="w-[140px] rounded-md scale-125 ml-8 "
+              className="w-[180px] rounded-md scale-125 ml-8 "
             />
           </LandingHeader.Left>
 
           <LandingHeader.Center>
-            <LandingHeader.Nav className="justify-end gap-8 lg:gap-10">
+            <LandingHeader.Nav className="justify-end gap-8 text-white lg:gap-10">
               {navigationItems.map((item) => (
                 <LandingHeader.Nav.Item key={item.href} href={item.href}>
                   {item.label}
@@ -193,7 +192,7 @@ export default function SgoLandingHome() {
             </LandingHeader.Nav>
           </LandingHeader.Center>
 
-          <LandingHeader.Right className="gap-3">
+          <LandingHeader.Right className="gap-3 text-white">
             <div className="hidden md:block">
               <Button
                 type="button"
@@ -211,12 +210,14 @@ export default function SgoLandingHome() {
                     : !mobileMenuOpen) as never,
                 )
               }
+              className="border border-white/30 bg-white/5 text-white shadow-[0_10px_28px_rgba(0,0,0,0.12)] transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
             />
           </LandingHeader.Right>
         </LandingHeader.Root>
 
         <LandingHeader.MobileMenuPanel
           open={mobileMenuOpen}
+          className="border-b border-white/10 bg-primary-950/96 text-white shadow-[0_20px_48px_rgba(3,7,18,0.34)] backdrop-blur-xl"
           cta={
             <Button
               type="button"
@@ -225,7 +226,7 @@ export default function SgoLandingHome() {
                 setMobileMenuOpen(false);
                 scrollToSection("contato");
               }}
-              className="mx-auto rounded-full bg-black px-7 py-3 text-white"
+              className="mx-auto rounded-full bg-secondary-500 px-7 py-3 text-black shadow-[0_16px_40px_rgba(125,139,183,0.28)]"
             />
           }
         >
@@ -234,6 +235,7 @@ export default function SgoLandingHome() {
               key={item.href}
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
+              className="text-white opacity-100 hover:text-secondary-200"
             >
               {item.label}
             </LandingHeader.Nav.Item>
@@ -438,7 +440,7 @@ export default function SgoLandingHome() {
                         />
                         <Subtitle
                           content={item.title}
-                          className="!text-sm leading-tight text-black m-4"
+                          className="!text-xs leading-tight text-black m-4"
                         />
                       </button>
                     )}
@@ -633,29 +635,32 @@ export default function SgoLandingHome() {
             columns={3}
             className="border-b border-white/10 py-14 m-auto !max-w-6xl"
           >
-            <Footer.Column className="items-start">
+            <Footer.Column className="items-center text-center sm:items-start sm:text-left">
               <Image
                 src={logoImage}
                 alt="SGO Engenharia & Consultoria"
                 width={150}
                 height={62}
-                className="w-[140px] rounded-md"
+                className="mx-auto w-[140px] rounded-md sm:mx-0"
               />
               <Paragraph
                 content={footerMock.summary}
-                className="mt-5 !max-w-[280px] !text-xs text-white/70"
+                className="mt-5 !max-w-[200px] !text-center !text-xs text-white/70 sm:!text-left"
               />
             </Footer.Column>
 
             {footerGroups.map((group) => (
-              <Footer.Column key={group.title} className="items-start">
+              <Footer.Column
+                key={group.title}
+                className="items-center text-center sm:items-start sm:text-left"
+              >
                 <Subtitle content={group.title} className="mb-4 text-white" />
-                <div className="space-y-3">
+                <div className="flex flex-col items-center space-y-3 sm:items-start">
                   {group.items.map((item) => (
                     <a key={item.label} href={item.href}>
                       <Paragraph
                         content={item.label}
-                        className="text-sm text-white/70 transition-opacity hover:opacity-100"
+                        className="text-center text-sm text-white/70 transition-opacity hover:opacity-100 sm:text-left"
                       />
                     </a>
                   ))}
@@ -665,13 +670,13 @@ export default function SgoLandingHome() {
           </Footer.Top>
 
           <Footer.Bottom className="bg-primary-900">
-            <div className="flex w-full flex-col items-center justify-between gap-4 sm:flex-row">
+            <div className="flex w-full flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
               <Paragraph
                 content={`© ${currentYear} ${footerMock.copyright}`}
-                className="text-sm text-white/55"
+                className="text-center !text-xs text-white/55 sm:text-left"
               />
-              <div className="flex  gap-2 text-white/70">
-                <span className="text-xs text-white/55 flex items-center gap-[6px]">
+              <div className="flex justify-center gap-2 text-white/70 sm:justify-end">
+                <span className="flex items-center justify-center gap-[6px] text-center text-xs text-white/55 sm:justify-start sm:text-left">
                   Desenvolvido por{" "}
                   <a
                     href="https://www.plssistemas.com.br"
@@ -684,7 +689,7 @@ export default function SgoLandingHome() {
                       alt="PLS Sistemas"
                       width={75}
                       height={30}
-                      className="w-[75px] h-[30px] rounded-md"
+                      className="h-[30px] w-[75px] rounded-md"
                     />
                   </a>
                 </span>

@@ -5,7 +5,7 @@ import {
   CaretCircleRightIcon,
 } from "@phosphor-icons/react";
 import clsx from "clsx";
-import React, { useMemo, useRef, useState } from "react";
+import React, { useMemo, useRef } from "react";
 import { A11y, Autoplay, Grid, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -58,8 +58,6 @@ export default function BannerCarousel({
 }: BannerCarouselProps) {
   const prevRef = useRef<HTMLButtonElement | null>(null);
   const nextRef = useRef<HTMLButtonElement | null>(null);
-  const [isBeginning, setIsBeginning] = useState(true);
-  const [isEnd, setIsEnd] = useState(false);
 
   // Single, full-width slide at all widths; no gaps
   const computedBreakpoints = useMemo(() => {
@@ -105,8 +103,7 @@ export default function BannerCarousel({
               "absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 z-20",
               "inline-flex items-center justify-center rounded-full",
               "w-6 h-6 sm:w-10 sm:h-10",
-              "bg-transparent text-white",
-              isBeginning && "opacity-50 cursor-not-allowed"
+              "bg-transparent text-white"
             )}
           >
             <CaretCircleLeftIcon weight="fill" size={24} />
@@ -121,8 +118,7 @@ export default function BannerCarousel({
             className={clsx(
               "absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 z-20",
               "inline-flex items-center justify-center rounded-full",
-              "bg-transparent text-white",
-              isEnd && "opacity-50 cursor-not-allowed"
+              "bg-transparent text-white"
             )}
           >
             <CaretCircleRightIcon weight="fill" size={24} />
@@ -148,12 +144,6 @@ export default function BannerCarousel({
           onAfterInit={(s) => {
             s.navigation?.init();
             s.navigation?.update();
-            setIsBeginning(s.isBeginning);
-            setIsEnd(s.isEnd);
-          }}
-          onSlideChange={(s) => {
-            setIsBeginning(s.isBeginning);
-            setIsEnd(s.isEnd);
           }}
           // Dots under the banner
           pagination={
