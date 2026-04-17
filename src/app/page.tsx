@@ -52,6 +52,7 @@ import {
 import Image from "next/image";
 import { useState, type ReactNode } from "react";
 import logoImage from "../../public/imgs/logo.png";
+import logoSmall from "../../public/imgs/logo_small.png";
 import logoPLS from "../../public/imgs/logo_pls.png";
 
 const serviceIcons: Record<ServiceIconKey, ReactNode> = {
@@ -176,7 +177,7 @@ export default function SgoLandingHome() {
         >
           <LandingHeader.Left className="gap-3">
             <LandingHeader.Logo
-              src={logoImage.src}
+              src={logoSmall.src}
               alt="SGO Engenharia & Consultoria"
               className="w-[180px] rounded-md scale-125 ml-8 "
             />
