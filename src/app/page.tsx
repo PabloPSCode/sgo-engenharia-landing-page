@@ -718,7 +718,7 @@ export default function SgoLandingHome() {
               />
               <div className="flex justify-center gap-2 text-white/70 sm:justify-end">
                 <span className="flex items-center justify-center gap-[6px] text-center text-xs text-white/55 sm:justify-start sm:text-left">
-                  Desenvolvido por{" "}
+                  Orgulhosamente desenvolvido por{" "}
                   <a
                     href="https://www.plssistemas.com.br"
                     target="_blank"
