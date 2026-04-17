@@ -104,6 +104,7 @@ export const aboutMock = {
     ["Mais de 30 anos de experiência"],
     ["processos de soldagem ao arco elétrico"],
   ],
+  paragraphHighlights: []
 };
 
 export const serviceItems: ServiceItem[] = [

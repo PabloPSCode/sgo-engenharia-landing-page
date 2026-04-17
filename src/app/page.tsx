@@ -445,6 +445,7 @@ export default function SgoLandingHome() {
                 <div className="h-[480px] w-full sm:h-[480px]">
                   <Carousel
                     loop
+                    autoplay
                     breakpoints={{
                       "640": {
                         rows: 1,

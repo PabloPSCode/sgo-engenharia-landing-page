@@ -43,6 +43,8 @@ export interface CarouselProps<T = unknown> {
   className?: string;
   /** Callback no slide change. */
   onSlideChange?: (swiper: SwiperType) => void;
+  /** Ativar autoplay. */
+  autoplay?: boolean;
 }
 
 /**
@@ -75,6 +77,7 @@ export default function Carousel<T>({
   rows = 1,
   spaceBetween = 24,
   loop = false,
+  autoplay = false,
   showNavigation = true,
   breakpoints,
   className,
@@ -147,6 +150,7 @@ export default function Carousel<T>({
           slidesPerView={slidesPerView}
           spaceBetween={spaceBetween}
           loop={loop}
+          autoplay={autoplay}
           // navigation via refs
           onBeforeInit={(swiper) => {
             // @ts-expect-error internal Swiper types
