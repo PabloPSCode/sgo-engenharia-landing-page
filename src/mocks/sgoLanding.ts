@@ -45,6 +45,11 @@ export type QualificationItem = {
   text: string;
 };
 
+export type QualityItem = {
+  title: string;
+  points: string[];
+};
+
 export type ContactIconKey = "phone" | "whatsapp" | "email" | "location";
 
 export type ContactItem = {
@@ -57,7 +62,8 @@ export type ContactItem = {
 export const navigationItems: NavigationItem[] = [
   { href: "#sobre", label: "Sobre" },
   { href: "#servicos", label: "Serviços" },
-  { href: "#qualificacoes", label: "Qualificações" },
+  { href: "#normas-tecnicas", label: "Nomas Técnicas" },
+  { href: "#qualificacoes", label: "Qualidade SGO" },
 ];
 
 export const imageUrls = {
@@ -104,7 +110,7 @@ export const aboutMock = {
     ["Mais de 30 anos de experiência"],
     ["processos de soldagem ao arco elétrico"],
   ],
-  paragraphHighlights: []
+  paragraphHighlights: [],
 };
 
 export const serviceItems: ServiceItem[] = [
@@ -120,7 +126,8 @@ export const serviceItems: ServiceItem[] = [
   },
   {
     iconKey: "file",
-    title: "Estudo de Produtividade / Controle de Equipamentos de Soldagem e Manutenção",
+    title:
+      "Estudo de Produtividade / Controle de Equipamentos de Soldagem",
     text: "Realizar estudos dos parâmetros de soldagem visando à maximização da eficiência da mão de obra e dos equipamentos destinados ao projeto.",
   },
   {
@@ -181,7 +188,8 @@ export const serviceGalleryItems: GalleryItem[] = [
   },
   {
     image: "/imgs/welding7.png",
-    title: "Processo de soldagem Semiautomatico GMAW-CCC / FCAW-G e FCAW-S em tubulação industrial e duto terrestre.",
+    title:
+      "Processo de soldagem Semiautomatico GMAW-CCC / FCAW-G e FCAW-S em tubulação industrial e duto terrestre.",
     description:
       "Registro visual de processos organizados para garantir repetibilidade, controle técnico e redução de desvios em campo.",
   },
@@ -244,6 +252,64 @@ export const qualificationItems: QualificationItem[] = [
   },
 ];
 
+export const qualityItems: QualityItem[] = [
+  {
+    title: "Planejamento da Qualidade na Obra",
+    points: [
+      "Desenvolver o Plano da Qualidade da Obra (PCQ) conforme exigências contratuais e normativas, incluindo ISO 9001, ISO 14001 e ISO 45001.",
+      "Definir critérios de aceitação, métodos de inspeção e controles aplicáveis aos processos construtivos.",
+      "Identificar riscos e oportunidades relacionados à qualidade, propondo ações preventivas.",
+    ],
+  },
+  {
+    title: "Controle da Qualidade dos Processos e Produtos",
+    points: [
+      "Monitorar e controlar etapas críticas da obra, como recebimento de materiais, montagem, soldagem, testes e ensaios.",
+      "Garantir a rastreabilidade de materiais, componentes e processos produtivos.",
+      "Acompanhar e validar inspeções visuais, dimensionais, ENDs e registros de conformidade.",
+    ],
+  },
+  {
+    title: "Gestão de Não Conformidades e Ações Corretivas",
+    points: [
+      "Identificar, registrar e tratar não conformidades internas e externas.",
+      "Conduzir análises de causa raiz e implementar ações corretivas e preventivas.",
+      "Elaborar relatórios técnicos e indicadores de desempenho da qualidade.",
+    ],
+  },
+  {
+    title: "Apoio à Qualificação Técnica",
+    points: [
+      "Participar da qualificação de procedimentos (EPS e RQPS) e de profissionais, como soldadores, inspetores e operadores.",
+      "Validar documentos técnicos relacionados à execução dos serviços, incluindo ITs, PIT, fichas de verificação e checklists.",
+      "Fazer interface com Inspetores Nível 2 de soldagem, Inspetores Nível 3 END e laboratórios para ensaios e estudos de caso.",
+    ],
+  },
+  {
+    title: "Treinamento e Conscientização",
+    points: [
+      "Promover treinamentos e diálogos de qualidade com as equipes de obra.",
+      "Disseminar a cultura da qualidade e o compromisso com o SIG entre colaboradores, terceiros e fornecedores.",
+    ],
+  },
+  {
+    title: "Implantação e Manutenção do SIG na Obra",
+    points: [
+      "Apoiar na adequação e implementação dos requisitos das normas ISO 9001, ISO 14001 e ISO 45001.",
+      "Integrar processos e procedimentos das áreas de Qualidade, Segurança e Meio Ambiente.",
+      "Assegurar a conformidade documental e operacional do SIG junto ao corporativo e auditorias.",
+    ],
+  },
+  {
+    title: "Auditorias e Melhoria Contínua",
+    points: [
+      "Participar de auditorias internas e externas, acompanhando planos de ação corretiva.",
+      "Conduzir reuniões de análise crítica da qualidade com a equipe de obra.",
+      "Sugerir melhorias nos processos e promover a padronização de boas práticas.",
+    ],
+  },
+];
+
 export const faqItems: QuestionItem[] = [
   {
     question: "Quais normas técnicas vocês trabalham?",
@@ -277,7 +343,7 @@ export const contactMock = {
   addressSummary: "Av. Isaac Cassimiro Gomes, nº 1463",
   serviceArea:
     "Atendimento consultivo para Minas Gerais e demais regiões do Brasil.",
-  mapAddress: "Av. Isaac Cassimiro Gomes, 1463",
+  mapAddress: "Av. Isac Casemiro Gomes, 1463 - Loanda, João Monlevade - MG, 35930-357",
   whatsappFloatingHref:
     "https://wa.me/5531975454901?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20SGO%20Engenharia",
 };
@@ -314,7 +380,6 @@ export const footerGroups: FooterGroup[] = [
     title: "Serviços",
     items: [
       { href: "#servicos", label: "Consultoria" },
-      { href: "#servicos", label: "Qualificação" },
       { href: "#servicos", label: "Auditorias" },
     ],
   },
@@ -322,14 +387,14 @@ export const footerGroups: FooterGroup[] = [
     title: "Empresa",
     items: [
       { href: "#sobre", label: "Sobre" },
-      { href: "#qualificacoes", label: "Qualificações" },
+      { href: "#normas-tecnicas", label: "Nomas Técnicas" },
+      { href: "#qualificacoes", label: "Qualidade SGO" },
     ],
   },
 ];
 
 export const footerMock = {
   summary: "Excelência em soldagem e gestão da qualidade industrial",
-  copyright:
-    "SGO - Soldagem e Gestão da Qualidade.",
+  copyright: "SGO - Soldagem e Gestão da Qualidade.",
   note: "Certificações IWE/IIW - ISO 9001/14001/45001",
 };

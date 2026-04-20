@@ -25,6 +25,7 @@ import {
   heroMock,
   imageUrls,
   navigationItems,
+  qualityItems,
   qualificationItems,
   serviceGalleryItems,
   serviceItems,
@@ -32,6 +33,7 @@ import {
   type ContactIconKey,
   type GalleryItem,
   type ProofIconKey,
+  type QualityItem,
   type QualificationItem,
   type ServiceIconKey,
 } from "@/mocks/sgoLanding";
@@ -112,6 +114,14 @@ const qualificationIconOrder: ProofIconKey[] = [
   "globe",
 ];
 
+const qualityIconOrder: ProofIconKey[] = [
+  "medal",
+  "shield",
+  "globe",
+  "medal",
+  "shield",
+];
+
 const contactIconMap: Record<ContactIconKey, ReactNode> = {
   phone: <PhoneIcon size={28} weight="fill" className="text-secondary-600" />,
   whatsapp: (
@@ -187,6 +197,35 @@ function renderQualificationCard(
         className="mt-5 text-xl leading-snug text-black"
       />
       <Paragraph content={item.text} className="mt-3 text-black/60" />
+    </div>
+  );
+}
+
+function renderQualityCard(item: QualityItem, index: number): ReactNode {
+  const iconKey = qualityIconOrder[index % qualityIconOrder.length];
+
+  return (
+    <div className="h-full rounded-[1.5rem] bg-[#ffffff] p-8 shadow-[0_18px_40px_rgba(0,0,0,0.05)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(0,0,0,0.08)]">
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-secondary-500/15">
+          {qualificationIconMap[iconKey]}
+        </div>
+      </div>
+
+      <Subtitle
+        content={item.title}
+        className="mt-5 text-xl leading-snug text-black"
+      />
+
+      <div className="mt-4 space-y-3">
+        {item.points.map((point) => (
+          <Paragraph
+            key={point}
+            content={point}
+            className="text-black/60"
+          />
+        ))}
+      </div>
     </div>
   );
 }
@@ -410,8 +449,8 @@ export default function SgoLandingHome() {
                 className="block text-4xl font-bold text-black sm:text-5xl"
               />
               <Paragraph
-                content="Soluções completas para coordenação e gestão de qualidade em soldagem"
-                className="mx-auto mt-4 max-w-2xl text-black/65"
+                content="Soluções completas para coordenação e gestão de qualidade em soldagem."
+                className="mx-auto mt-4 max-w-3xl text-black/65"
               />
             </div>
 
@@ -441,7 +480,7 @@ export default function SgoLandingHome() {
             </div>
 
             <RevealContainer once delay={1} className="mt-14">
-              <div className="overflow-hidden sm:p-6">
+              <div className="overflow-hidden sm:p-6 bg-white rounded-[1.5rem]">
                 <div className="h-[480px] w-full sm:h-[480px]">
                   <Carousel
                     loop
@@ -469,7 +508,7 @@ export default function SgoLandingHome() {
                       <button
                         type="button"
                         onClick={() => setSelectedGalleryItem(item)}
-                        className="flex h-full w-full flex-col overflow-hidden rounded-[1.5rem] bg-white text-left shadow-[0_16px_40px_rgba(0,0,0,0.06)] transition-transform duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-secondary-500/60"
+                        className="flex h-full w-full flex-col overflow-hidden bg-white text-left  transition-transform duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-secondary-500/60"
                       >
                         <Image
                           src={item.image}
@@ -477,7 +516,7 @@ export default function SgoLandingHome() {
                           width={640}
                           height={640}
                           unoptimized
-                          className="h-[240px] w-full object-cover sm:h-[310px] lg:h-[360px]"
+                          className="h-[240px] w-full object-cover sm:h-[310px] lg:h-[360px]  rounded-[1.5rem]"
                         />
                         <Subtitle
                           content={item.title}
@@ -514,17 +553,17 @@ export default function SgoLandingHome() {
                 width={1600}
                 height={1200}
                 unoptimized
-                className="h-auto max-h-[72vh] w-full object-contain"
+                className="h-auto max-h-[72vh] w-full object-contain rounded-[1rem]"
               />
           </div>
         )}
       </GenericModal>
 
-      <div id="qualificacoes" className="scroll-mt-8">
+      <div id="normas-tecnicas" className="scroll-mt-8">
         <Section size="middle" sectionClassName="bg-white py-24">
           <div className="mx-auto max-w-3xl text-center">
             <SplitText
-              text="Qualificações e Normas"
+              text="Normas técnicas atendidas"
               tag="h2"
               splitType="chars"
               delay={20}
@@ -532,8 +571,8 @@ export default function SgoLandingHome() {
               className="block text-4xl font-bold text-black sm:text-5xl"
             />
             <Paragraph
-              content="Atendemos às principais normas técnicas nacionais e internacionais"
-              className="mx-auto mt-4 max-w-2xl text-black/65"
+              content="Atendemos às principais normas técnicas nacionais e internacionais."
+              className="mx-auto mt-4 max-w-3xl text-black/65"
             />
           </div>
 
@@ -552,8 +591,40 @@ export default function SgoLandingHome() {
         </Section>
       </div>
 
+      <div id="qualificacoes" className="w-full scroll-mt-8 bg-primary-50">
+        <Section size="middle" sectionClassName="bg-transparent py-24">
+          <div className="mx-auto max-w-3xl text-center">
+            <SplitText
+              text="Qualidade SGO"
+              tag="h2"
+              splitType="chars"
+              delay={20}
+              textAlign="center"
+              className="block text-4xl font-bold text-black sm:text-5xl"
+            />
+            <Paragraph
+              content="Atuação sólida em planejamento, controle, qualificação técnica e melhoria contínua."
+              className="mx-auto mt-4 max-w-3xl text-black/65"
+            />
+          </div>
+
+          <div className="mt-14 grid w-full gap-8 md:grid-cols-2">
+            {qualityItems.map((item, index) => (
+              <RevealContainer
+                key={item.title}
+                once
+                delay={index + 1}
+                className="h-full"
+              >
+                {renderQualityCard(item, index)}
+              </RevealContainer>
+            ))}
+          </div>
+        </Section>
+      </div>
+
       <div id="duvidas" className="scroll-mt-8">
-        <Section size="full" sectionClassName="bg-[#f7f7f7] py-24">
+        <Section size="full" sectionClassName="bg-white py-24">
           <div className="mx-auto w-full max-w-4xl">
             <div className="mx-auto max-w-3xl text-center">
               <SplitText
@@ -566,7 +637,7 @@ export default function SgoLandingHome() {
               />
               <Paragraph
                 content="Veja abaixo as perguntas mais comuns."
-                className="mx-auto mt-4 max-w-2xl text-black/65"
+                className="mx-auto mt-4 max-w-3xl text-black/65"
               />
             </div>
 
@@ -587,7 +658,7 @@ export default function SgoLandingHome() {
       </div>
 
       <div id="contato" className="scroll-mt-8">
-        <Section size="full" sectionClassName="bg-white py-24">
+        <Section size="full" sectionClassName="bg-primary-50 py-24">
           <div className="mx-auto w-full max-w-6xl">
             <div className="mx-auto max-w-3xl text-center">
               <SplitText
