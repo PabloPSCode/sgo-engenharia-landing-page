@@ -289,15 +289,15 @@ export const qualityItems: QualityItem[] = [
     title: "Treinamento e Conscientização",
     points: [
       "Promover treinamentos e diálogos de qualidade com as equipes de obra.",
-      "Disseminar a cultura da qualidade e o compromisso com o SIG entre colaboradores, terceiros e fornecedores.",
+      "Disseminar a cultura da qualidade e o compromisso com o SGI entre colaboradores, terceiros e fornecedores.",
     ],
   },
   {
-    title: "Implantação e Manutenção do SIG na Obra",
+    title: "Implantação e Manutenção do SGI na Obra",
     points: [
       "Apoiar na adequação e implementação dos requisitos das normas ISO 9001, ISO 14001 e ISO 45001.",
       "Integrar processos e procedimentos das áreas de Qualidade, Segurança e Meio Ambiente.",
-      "Assegurar a conformidade documental e operacional do SIG junto ao corporativo e auditorias.",
+      "Assegurar a conformidade documental e operacional do SGI junto ao corporativo e auditorias.",
     ],
   },
   {
